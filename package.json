@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "frontend-clean-architecture",
+  "version": "0.1.0",
+  "description": "The purpose of this repository is to follow the principles of Clean Architecture in frontend using different frameworks such as ReactJS and VueJs.",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {},
+  "devDependencies": {
+    "typescript": "^4.1.2"
+  }
+}
