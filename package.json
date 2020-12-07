@@ -6,7 +6,9 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {},
+  "scripts": {
+    "react": "yarn workspace react-app"
+  },
   "devDependencies": {
     "typescript": "^4.1.2"
   }
