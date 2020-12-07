@@ -7,9 +7,11 @@
     "packages/*"
   ],
   "scripts": {
-    "react": "yarn workspace react-app"
+    "react": "yarn workspace react-app",
+    "prettify": "prettier \"packages/**/src/**/*.{js,jsx,json,css,ts,tsx}\" --write"
   },
   "devDependencies": {
+    "prettier": "^2.2.1",
     "typescript": "^4.1.2"
   }
 }
