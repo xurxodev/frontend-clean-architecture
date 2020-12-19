@@ -1,7 +1,7 @@
-import CartRepository from "../domain/CartRepository";
-import Cart from "../domain/Cart";
+import { CartRepository } from "../domain/CartRepository";
+import { Cart } from "../domain/Cart";
 
-export default class CartInMemoryRepository implements CartRepository {
+export class CartInMemoryRepository implements CartRepository {
     cart = new Cart([
         {
             id: "1",

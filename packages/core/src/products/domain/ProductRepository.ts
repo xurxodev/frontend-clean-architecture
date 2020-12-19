@@ -1,5 +1,5 @@
-import Product from "./Product";
+import { Product } from "./Product";
 
-export default interface ProductRepository {
+export interface ProductRepository {
     get(filter: string): Promise<Array<Product>>;
 }

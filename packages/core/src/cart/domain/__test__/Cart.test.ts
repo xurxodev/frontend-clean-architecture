@@ -1,5 +1,5 @@
-import Cart from "../Cart";
-import CartItem from "../CartItem";
+import { Cart } from "../Cart";
+import { CartItem } from "../CartItem";
 
 describe("shopping cart", () => {
     describe("constructor", () => {

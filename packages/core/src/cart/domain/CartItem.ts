@@ -1,4 +1,4 @@
-export default interface CartItem {
+export interface CartItem {
     readonly id: string;
     readonly image: string;
     readonly title: string;

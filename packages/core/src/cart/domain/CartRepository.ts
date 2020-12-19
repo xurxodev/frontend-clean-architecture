@@ -1,6 +1,6 @@
-import Cart from "./Cart";
+import { Cart } from "./Cart";
 
-export default interface CartRepository {
+export interface CartRepository {
     get(): Promise<Cart>;
     save(cart: Cart): Promise<boolean>;
 }

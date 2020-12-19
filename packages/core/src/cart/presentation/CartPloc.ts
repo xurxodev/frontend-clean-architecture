@@ -1,11 +1,11 @@
 import { CartState, cartInitialState, CartItemState } from "./CartState";
-import Ploc from "../../common/presentation/Ploc";
-import GetCartUseCase from "../domain/usecases/GetCartUseCase";
-import AddProductToCartUseCase from "../domain/usecases/AddProductToCartUseCase";
-import RemoveItemFromCartUseCase from "../domain/usecases/RemoveItemFromCartUseCase";
-import EditQuantityOfCartItemUseCase from "../domain/usecases/EditQuantityOfCartItemUseCase";
-import Product from "../../products/domain/Product";
-import Cart from "../domain/Cart";
+import { Ploc } from "../../common/presentation/Ploc";
+import { GetCartUseCase } from "../domain/usecases/GetCartUseCase";
+import { AddProductToCartUseCase } from "../domain/usecases/AddProductToCartUseCase";
+import { RemoveItemFromCartUseCase } from "../domain/usecases/RemoveItemFromCartUseCase";
+import { EditQuantityOfCartItemUseCase } from "../domain/usecases/EditQuantityOfCartItemUseCase";
+import { Product } from "../../products/domain/Product";
+import { Cart } from "../domain/Cart";
 
 export class CartPloc extends Ploc<CartState> {
     constructor(

@@ -1,8 +1,8 @@
-import CartRepository from "../CartRepository";
-import Cart from "../Cart";
-import Product from "../../../products/domain/Product";
+import { CartRepository } from "../CartRepository";
+import { Cart } from "../Cart";
+import { Product } from "../../../products/domain/Product";
 
-export default class AddProductToCartUseCase {
+export class AddProductToCartUseCase {
     private cartRepository: CartRepository;
 
     constructor(cartRepository: CartRepository) {

@@ -1,7 +1,7 @@
-import ProductRepository from "./ProductRepository";
-import Product from "./Product";
+import { ProductRepository } from "./ProductRepository";
+import { Product } from "./Product";
 
-export default class GetProductsUseCase {
+export class GetProductsUseCase {
     private productRepository: ProductRepository;
 
     constructor(productRepository: ProductRepository) {

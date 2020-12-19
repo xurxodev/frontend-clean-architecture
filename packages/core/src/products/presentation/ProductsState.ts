@@ -1,4 +1,4 @@
-import Product from "../domain/Product";
+import { Product } from "../domain/Product";
 
 export interface CommonProductsState {
     searchTerm: string;

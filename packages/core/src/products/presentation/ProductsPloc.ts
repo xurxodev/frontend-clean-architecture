@@ -1,8 +1,8 @@
-import Ploc from "../../common/presentation/Ploc";
-import GetProductsUseCase from "../domain/GetProductsUseCase";
+import { Ploc } from "../../common/presentation/Ploc";
+import { GetProductsUseCase } from "../domain/GetProductsUseCase";
 import { productsInitialState, ProductsState } from "./ProductsState";
 
-export class ProductPloc extends Ploc<ProductsState> {
+export class ProductsPloc extends Ploc<ProductsState> {
     constructor(private getProductsUseCase: GetProductsUseCase) {
         super(productsInitialState);
     }

@@ -1,7 +1,7 @@
-import CartRepository from "../CartRepository";
-import Cart from "../Cart";
+import { CartRepository } from "../CartRepository";
+import { Cart } from "../Cart";
 
-export default class EditQuantityOfCartItemUseCase {
+export class EditQuantityOfCartItemUseCase {
     private cartRepository: CartRepository;
 
     constructor(cartRepository: CartRepository) {

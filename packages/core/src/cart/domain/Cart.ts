@@ -1,6 +1,6 @@
-import CartItem from "./CartItem";
+import { CartItem } from "./CartItem";
 
-export default class Cart {
+export class Cart {
     items: readonly CartItem[];
     readonly totalPrice: number;
     readonly totalItems: number;

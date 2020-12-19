@@ -1,5 +1,5 @@
-import ProductRepository from "../domain/ProductRepository";
-import Product from "../domain/Product";
+import { ProductRepository } from "../domain/ProductRepository";
+import { Product } from "../domain/Product";
 
 const products = [
     {
@@ -112,7 +112,7 @@ const products = [
     },
 ];
 
-export default class ProductInMemoryRepository implements ProductRepository {
+export class ProductInMemoryRepository implements ProductRepository {
     get(filter: string): Promise<Product[]> {
         return new Promise((resolve, _reject) => {
             setTimeout(() => {
