@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
+import App from "./app/App";
 import reportWebVitals from "./reportWebVitals";
+import theme from "./theme";
+import { CssBaseline, ThemeProvider } from "@material-ui/core";
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <App />
+        </ThemeProvider>
+        ,
     </React.StrictMode>,
     document.getElementById("root")
 );

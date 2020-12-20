@@ -11,7 +11,8 @@
     "react": "yarn workspace @frontend-clean-architecture/react-app",
     "vue": "yarn workspace @frontend-clean-architecture/vue-app",
     "prettify": "prettier \"packages/**/src/**/*.{js,jsx,json,css,ts,tsx,vue}\" --write",
-    "lint": "eslint packages/*/src/ --ext ts,tsx,vue"
+    "lint": "eslint packages/*/src/ --ext ts,tsx,vue",
+    "test": "yarn core test && yarn react test"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.9.1",
