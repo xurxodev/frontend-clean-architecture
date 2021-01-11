@@ -1,5 +1,5 @@
 <template>
-    <div class="hello">
+    <div class="products">
         <h1>{{ msg }}</h1>
         <p>
             For a guide and recipes on how to configure / customize this project,<br />
@@ -65,13 +65,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
+interface ProductListProps {
+    msg?: string;
+}
+
 export default defineComponent({
-    name: "HelloWorld",
-    props: {
-        msg: {
-            type: String,
-            required: false,
-        },
+    setup(props: ProductListProps) {
+        return props;
     },
 });
 </script>
