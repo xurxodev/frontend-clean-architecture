@@ -1,18 +1,18 @@
 <template>
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png" />
-        <Products msg="Welcome to Your Vue.js + TypeScript App" />
+        <ProductList msg="Welcome to Your Vue.js + TypeScript App" />
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Products from "./products/Products.vue";
+import ProductList from "./products/ProductList.vue";
 
 export default defineComponent({
     name: "App",
     components: {
-        Products,
+        ProductList,
     },
 });
 </script>
