@@ -6,7 +6,7 @@ interface PlocBuilderProps<B extends Ploc<S>, S> {
     builder: (state: S) => JSX.Element;
 }
 
-const BlocBuilder = <B extends Ploc<S>, S>({ bloc, builder }: PlocBuilderProps<B, S>) => {
+const PlocBuilder = <B extends Ploc<S>, S>({ bloc, builder }: PlocBuilderProps<B, S>) => {
     const [state, setState] = useState(bloc.state);
 
     useEffect(() => {
@@ -22,4 +22,4 @@ const BlocBuilder = <B extends Ploc<S>, S>({ bloc, builder }: PlocBuilderProps<B
     return builder(state);
 };
 
-export default BlocBuilder;
+export default PlocBuilder;

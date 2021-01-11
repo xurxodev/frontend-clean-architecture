@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { CircularProgress, Grid, Container, Box, Typography } from "@material-ui/core";
 import ProductItem from "./ProductItem";
 import * as DependenciesProvider from "../di/DependenciesProvider";
-import BlocBuilder from "../common/PlocBuilder";
+import PlocBuilder from "../common/PlocBuilder";
 import { ProductsState } from "@frontend-clean-architecture/core";
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +35,7 @@ const ProductList: React.FC = () => {
     }, [bloc]);
 
     return (
-        <BlocBuilder
+        <PlocBuilder
             bloc={bloc}
             builder={(state: ProductsState) => {
                 switch (state.kind) {

@@ -5,7 +5,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CartContent from "./CartContent";
 import { useCartBloc } from "../app/App";
-import BlocBuilder from "../common/PlocBuilder";
+import PlocBuilder from "../common/PlocBuilder";
 import { CartState } from "@frontend-clean-architecture/core";
 
 const drawerWidth = 350;
@@ -39,7 +39,7 @@ const CartDrawer: React.FC = () => {
     const bloc = useCartBloc();
 
     return (
-        <BlocBuilder
+        <PlocBuilder
             bloc={bloc}
             builder={(state: CartState) => {
                 return (
