@@ -2,9 +2,8 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { CircularProgress, Grid, Container, Box, Typography } from "@material-ui/core";
 import ProductItem from "./ProductItem";
-import * as DependenciesProvider from "../di/DependenciesProvider";
 import PlocBuilder from "../common/PlocBuilder";
-import { ProductsState } from "@frontend-clean-architecture/core";
+import { dependenciesLocator, ProductsState } from "@frontend-clean-architecture/core";
 
 const useStyles = makeStyles(theme => ({
     titleContainer: {
@@ -23,20 +22,20 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ProductList: React.FC = () => {
-    const bloc = DependenciesProvider.provideProductsBloc();
+    const ploc = dependenciesLocator.provideProductsPloc();
     const classes = useStyles();
 
     React.useEffect(() => {
         const searchProducts = async (filter: string) => {
-            bloc.search(filter);
+            ploc.search(filter);
         };
 
         searchProducts("Element");
-    }, [bloc]);
+    }, [ploc]);
 
     return (
         <PlocBuilder
-            bloc={bloc}
+            bloc={ploc}
             builder={(state: ProductsState) => {
                 switch (state.kind) {
                     case "LoadingProductsState": {

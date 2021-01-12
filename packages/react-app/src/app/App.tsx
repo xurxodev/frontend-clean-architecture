@@ -1,7 +1,6 @@
 import React from "react";
-import * as DependenciesProvider from "../di/DependenciesProvider";
 import MyAppBar from "../appbar/MyAppBar";
-import { CartPloc } from "@frontend-clean-architecture/core";
+import { CartPloc, dependenciesLocator } from "@frontend-clean-architecture/core";
 import { createContext } from "../common/Context";
 import ProductList from "../products/ProductList";
 import CartDrawer from "../cart/CartDrawer";
@@ -12,7 +11,7 @@ export const useCartBloc = useBloc;
 
 const App: React.FC = () => {
     return (
-        <blocContext.Provider value={DependenciesProvider.provideCartBloc()}>
+        <blocContext.Provider value={dependenciesLocator.provideCartPloc()}>
             <MyAppBar />
             <ProductList />
             <CartDrawer />
