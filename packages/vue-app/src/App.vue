@@ -1,11 +1,12 @@
 <template>
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png" />
-        <ProductList msg="Welcome to Your Vue.js + TypeScript App" />
+        <ProductList searchTerm="Element" />
     </div>
 </template>
 
 <script lang="ts">
+import { dependenciesLocator } from "@frontend-clean-architecture/core";
 import { defineComponent } from "vue";
 import ProductList from "./products/ProductList.vue";
 
@@ -13,6 +14,9 @@ export default defineComponent({
     name: "App",
     components: {
         ProductList,
+    },
+    provide: {
+        cartPloc: dependenciesLocator.provideCartPloc(),
     },
 });
 </script>
