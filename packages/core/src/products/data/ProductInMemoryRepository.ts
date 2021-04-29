@@ -4,7 +4,7 @@ import { Product } from "../domain/Product";
 const products = [
     {
         id: "1",
-        image: "https://m.media-amazon.com/images/I/81oKhu2bsgL._AC_UL640_FMwebp_QL65_.jpg",
+        image: "https://images-na.ssl-images-amazon.com/images/I/71Y1S1m-QAL._AC_UY879_.jpg",
         title: "Element Blazin LS tee Shirt, Hombre",
         price: 19.95,
     },
@@ -28,8 +28,8 @@ const products = [
     },
     {
         id: "5",
-        image: "https://m.media-amazon.com/images/I/71MG0EzCU4L._AC_UL640_FMwebp_QL65_.jpg",
-        title: "Element L1ssa8 Camiseta, Hombre",
+        image: "https://m.media-amazon.com/images/I/81SgdrnVNJL._AC_UL320_.jpg",
+        title: "Basic Pocket Label Camisetas Element Hombre",
         price: 27.95,
     },
     {
@@ -40,9 +40,9 @@ const products = [
     },
     {
         id: "7",
-        image: "https://m.media-amazon.com/images/I/81oKhu2bsgL._AC_UL640_FMwebp_QL65_.jpg",
-        title: "Element Blazin LS tee Shirt, Hombre",
-        price: 19.95,
+        image: "https://m.media-amazon.com/images/I/61S2KdoGNnL._AC_UL320_.jpg",
+        title: "Joint - Camiseta para Hombre Camiseta Element Hombre",
+        price: 32.0,
     },
     {
         id: "8",

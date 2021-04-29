@@ -34,5 +34,5 @@ function provideCartPloc(): CartPloc {
 
 export const dependenciesLocator = {
     provideProductsPloc,
-    provideCartPloc
-}
+    provideCartPloc,
+};

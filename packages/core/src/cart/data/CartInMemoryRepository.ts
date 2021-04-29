@@ -5,7 +5,7 @@ export class CartInMemoryRepository implements CartRepository {
     cart = new Cart([
         {
             id: "1",
-            image: "https://m.media-amazon.com/images/I/81oKhu2bsgL._AC_UL640_FMwebp_QL65_.jpg",
+            image: "https://images-na.ssl-images-amazon.com/images/I/71Y1S1m-QAL._AC_UY879_.jpg",
             title: "Element Blazin LS tee Shirt, Hombre",
             price: 19.95,
             quantity: 3,
