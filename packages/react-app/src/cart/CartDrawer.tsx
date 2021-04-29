@@ -5,8 +5,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CartContent from "./CartContent";
 import { useCartBloc } from "../app/App";
-import PlocBuilder from "../common/PlocBuilder";
-import { CartState } from "@frontend-clean-architecture/core";
+import { usePlocState } from "../common/usePlocState";
 
 const drawerWidth = 350;
 
@@ -36,37 +35,31 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const CartDrawer: React.FC = () => {
     const classes = useStyles();
-    const bloc = useCartBloc();
+    const ploc = useCartBloc();
+    const state = usePlocState(ploc);
 
     return (
-        <PlocBuilder
-            bloc={bloc}
-            builder={(state: CartState) => {
-                return (
-                    <Drawer
-                        anchor="right"
-                        open={state.open}
-                        className={classes.drawer}
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}>
-                        <Box className={classes.drawerHeader}>
-                            <IconButton onClick={() => bloc.closeCart()}>
-                                <ChevronLeftIcon />
-                            </IconButton>
-                            <Box className={classes.drawerTitleContainer}>
-                                <ShoppingCartIcon className={classes.drawerTitleIcon} />
-                                <Typography variant="h6" component="h2">
-                                    Cart
-                                </Typography>
-                            </Box>
-                        </Box>
-                        <Divider />
-                        <CartContent />
-                    </Drawer>
-                );
-            }}
-        />
+        <Drawer
+            anchor="right"
+            open={state.open}
+            className={classes.drawer}
+            classes={{
+                paper: classes.drawerPaper,
+            }}>
+            <Box className={classes.drawerHeader}>
+                <IconButton onClick={() => ploc.closeCart()}>
+                    <ChevronLeftIcon />
+                </IconButton>
+                <Box className={classes.drawerTitleContainer}>
+                    <ShoppingCartIcon className={classes.drawerTitleIcon} />
+                    <Typography variant="h6" component="h2">
+                        Cart
+                    </Typography>
+                </Box>
+            </Box>
+            <Divider />
+            <CartContent />
+        </Drawer>
     );
 };
 

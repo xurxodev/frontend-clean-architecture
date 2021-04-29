@@ -7,21 +7,21 @@ export class ProductsPloc extends Ploc<ProductsState> {
         super(productsInitialState);
     }
 
-    search(filter: string) {
+    search(searchTerm: string) {
         this.getProductsUseCase
-            .execute(filter)
+            .execute(searchTerm)
             .then(products =>
                 this.changeState({
                     kind: "LoadedProductsState",
                     products: products,
-                    searchTerm: this.state.searchTerm,
+                    searchTerm,
                 })
             )
             .catch(() =>
                 this.changeState({
                     kind: "ErrorProductsState",
                     error: "An error has ocurred loading products",
-                    searchTerm: this.state.searchTerm,
+                    searchTerm,
                 })
             );
     }

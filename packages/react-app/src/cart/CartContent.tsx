@@ -2,9 +2,9 @@ import React from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
 import { List, Divider, Box, Typography, CircularProgress } from "@material-ui/core";
 import CartContentItem from "./CartContentItem";
-import { CartItemState, CartState } from "@frontend-clean-architecture/core";
-import { useCartBloc } from "../app/App";
-import PlocBuilder from "../common/PlocBuilder";
+import { CartItemState } from "@frontend-clean-architecture/core";
+import { useCartBloc as useCartPloc } from "../app/App";
+import { usePlocState } from "../common/usePlocState";
 
 const useStyles = makeStyles((theme: Theme) => ({
     totalPriceContainer: {
@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const CartContent: React.FC = () => {
     const classes = useStyles();
-    const bloc = useCartBloc();
+    const ploc = useCartPloc();
+    const state = usePlocState(ploc);
 
     const cartItems = (items: CartItemState[]) => (
         <List className={classes.itemsList}>
@@ -51,51 +52,42 @@ const CartContent: React.FC = () => {
         </React.Fragment>
     );
 
-    return (
-        <PlocBuilder
-            bloc={bloc}
-            builder={(state: CartState) => {
-                switch (state.kind) {
-                    case "LoadingCartState": {
-                        return (
-                            <div className={classes.infoContainer}>
-                                <CircularProgress />
-                            </div>
-                        );
-                    }
-                    case "ErrorCartState": {
-                        return (
-                            <div className={classes.infoContainer}>
-                                <Typography display="inline" variant="h5" component="h2">
-                                    {state.error}
-                                </Typography>
-                            </div>
-                        );
-                    }
-                    case "UpdatedCartState": {
-                        return (
-                            <React.Fragment>
-                                <Box flexDirection="column" className={classes.itemsContainer}>
-                                    {state.items.length > 0
-                                        ? cartItems(state.items)
-                                        : emptyCartItems()}
-                                </Box>
-                                <Divider />
-                                <Box flexDirection="row" className={classes.totalPriceContainer}>
-                                    <Typography variant="h6" component="h2">
-                                        Total Price
-                                    </Typography>
-                                    <Typography variant="h6" component="h2">
-                                        {state.totalPrice}
-                                    </Typography>
-                                </Box>
-                            </React.Fragment>
-                        );
-                    }
-                }
-            }}
-        />
-    );
+    switch (state.kind) {
+        case "LoadingCartState": {
+            return (
+                <div className={classes.infoContainer}>
+                    <CircularProgress />
+                </div>
+            );
+        }
+        case "ErrorCartState": {
+            return (
+                <div className={classes.infoContainer}>
+                    <Typography display="inline" variant="h5" component="h2">
+                        {state.error}
+                    </Typography>
+                </div>
+            );
+        }
+        case "UpdatedCartState": {
+            return (
+                <React.Fragment>
+                    <Box flexDirection="column" className={classes.itemsContainer}>
+                        {state.items.length > 0 ? cartItems(state.items) : emptyCartItems()}
+                    </Box>
+                    <Divider />
+                    <Box flexDirection="row" className={classes.totalPriceContainer}>
+                        <Typography variant="h6" component="h2">
+                            Total Price
+                        </Typography>
+                        <Typography variant="h6" component="h2">
+                            {state.totalPrice}
+                        </Typography>
+                    </Box>
+                </React.Fragment>
+            );
+        }
+    }
 };
 
 export default CartContent;
