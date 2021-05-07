@@ -1,18 +1,19 @@
 <template>
-    <div id="products">
+    <div id="info-container" v-if="state.kind === 'LoadingProductsState'">
+        <ProgressSpinner />
+    </div>
+    <div id="info-container" v-if="state.kind === 'ErrorProductsState'">Error</div>
+    <div id="products-container" idv-if="state.kind === 'LoadedProductsState'">
         <h2>Results for "{{ state.searchTerm }}"</h2>
 
-        <!-- https://github.com/kevinrodriguez-io/vue-bloc-state-management/blob/master/src/components/Todos.vue -->
-        <div id="products-content">
-            <div v-if="state.kind === 'LoadingProductsState'">Loading</div>
-            <div v-if="state.kind === 'LoadedProductsState'">
-                <ul>
-                    <li v-for="product in state.products" v-bind:key="product.id">
-                        {{ product.title }}
-                    </li>
-                </ul>
+        <div class="p-grid">
+            <div
+                class="p-col-6 p-md-4 p-lg-3 p-xl-2"
+                v-for="product in state.products"
+                v-bind:key="product.id"
+            >
+                <ProductItem v-bind="product" />
             </div>
-            <div v-if="state.kind === 'ErrorProductsState'">Error</div>
         </div>
     </div>
 </template>
@@ -21,9 +22,12 @@
 import { defineComponent, onMounted } from "vue";
 import { dependenciesLocator } from "@frontend-clean-architecture/core";
 import { usePlocState } from "../common/usePlocState";
+import ProductItem from "./ProductItem.vue";
 
 export default defineComponent({
-    //inject: ["productsPloc"],
+    components: {
+        ProductItem,
+    },
     props: {
         searchTerm: {
             type: String,
@@ -31,7 +35,6 @@ export default defineComponent({
         },
     },
     setup(props) {
-        //const productsPloc = inject<ProductsPloc>("productsPloc") as ProductsPloc;
         const ploc = dependenciesLocator.provideProductsPloc();
         const state = usePlocState(ploc);
 
@@ -45,17 +48,13 @@ export default defineComponent({
 </script>
 
 <style scoped>
-h3 {
-    margin: 40px 0 0;
+#products-container {
+    padding: 16px;
 }
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-li {
-    margin: 10px 0px;
-}
-a {
-    color: #42b983;
+#info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 </style>
