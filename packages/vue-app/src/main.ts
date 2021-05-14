@@ -12,6 +12,9 @@ import Button from "primevue/button";
 import Splitbutton from "primevue/splitbutton";
 import ProgressSpinner from "primevue/progressspinner";
 import Card from "primevue/card";
+import Sidebar from "primevue/sidebar";
+import Divider from "primevue/divider";
+import InputNumber from "primevue/inputnumber";
 
 const app = createApp(App);
 
@@ -20,7 +23,12 @@ app.use(PrimeVue);
 app.component("Toolbar", Toolbar);
 app.component("Button", Button);
 app.component("Splitbutton", Splitbutton);
+
 app.component("ProgressSpinner", ProgressSpinner);
 app.component("Card", Card);
+
+app.component("Sidebar", Sidebar);
+app.component("Divider", Divider);
+app.component("InputNumber", InputNumber);
 
 app.mount("#app");

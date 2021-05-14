@@ -12,6 +12,7 @@
                     label="Cart"
                     v-bind:badge="state.totalItems ? state.totalItems.toString() : '0'"
                     badgeClass="p-badge-danger"
+                    @click="handleOpenCart"
                 />
             </template>
         </Toolbar>
@@ -28,8 +29,13 @@ export default defineComponent({
         const cartPloc = inject<CartPloc>("cartPloc") as CartPloc;
         const state = usePlocState(cartPloc);
 
+        const handleOpenCart = () => {
+            cartPloc?.openCart();
+        };
+
         return {
             state,
+            handleOpenCart,
         };
     },
 });

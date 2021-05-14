@@ -7,7 +7,6 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import logo from "./logo.png";
 import reactLogo from "./react-logo.png";
 import { useCartBloc } from "../app/App";
-import { UpdatedCartState } from "@frontend-clean-architecture/core";
 import { usePlocState } from "../common/usePlocState";
 
 const useStyles = makeStyles(() => ({
