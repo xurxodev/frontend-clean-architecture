@@ -11,7 +11,7 @@ import {
     Typography,
 } from "@material-ui/core";
 import RemoveIcon from "@material-ui/icons/Clear";
-import { useCartBloc } from "../app/App";
+import { useCartPloc } from "../app/App";
 import { CartItemState } from "@frontend-clean-architecture/core";
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -41,7 +41,7 @@ interface CartProps {
 
 const CartContentItem: React.FC<CartProps> = ({ key, cartItem }) => {
     const classes = useStyles();
-    const bloc = useCartBloc();
+    const bloc = useCartPloc();
 
     return (
         <React.Fragment>

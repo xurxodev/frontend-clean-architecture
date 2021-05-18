@@ -6,7 +6,7 @@ import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import logo from "./logo.png";
 import reactLogo from "./react-logo.png";
-import { useCartBloc } from "../app/App";
+import { useCartPloc } from "../app/App";
 import { usePlocState } from "../common/usePlocState";
 
 const useStyles = makeStyles(() => ({
@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
 
 const MyAppBar: React.FC = () => {
     const classes = useStyles();
-    const ploc = useCartBloc();
+    const ploc = useCartPloc();
     const state = usePlocState(ploc);
 
     const totalItems = state.kind === "UpdatedCartState" ? state.totalItems : 0;

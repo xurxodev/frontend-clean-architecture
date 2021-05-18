@@ -4,7 +4,7 @@ import { Drawer, IconButton, Divider, Typography, Box } from "@material-ui/core"
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import CartContent from "./CartContent";
-import { useCartBloc } from "../app/App";
+import { useCartPloc } from "../app/App";
 import { usePlocState } from "../common/usePlocState";
 
 const drawerWidth = 350;
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const CartDrawer: React.FC = () => {
     const classes = useStyles();
-    const ploc = useCartBloc();
+    const ploc = useCartPloc();
     const state = usePlocState(ploc);
 
     return (

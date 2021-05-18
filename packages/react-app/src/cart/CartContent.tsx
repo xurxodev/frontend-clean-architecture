@@ -3,7 +3,7 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import { List, Divider, Box, Typography, CircularProgress } from "@material-ui/core";
 import CartContentItem from "./CartContentItem";
 import { CartItemState } from "@frontend-clean-architecture/core";
-import { useCartBloc as useCartPloc } from "../app/App";
+import { useCartPloc as useCartPloc } from "../app/App";
 import { usePlocState } from "../common/usePlocState";
 
 const useStyles = makeStyles((theme: Theme) => ({

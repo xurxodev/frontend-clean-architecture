@@ -10,7 +10,7 @@ import {
     Button,
 } from "@material-ui/core";
 import { Product } from "@frontend-clean-architecture/core";
-import { useCartBloc } from "../app/App";
+import { useCartPloc } from "../app/App";
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -45,7 +45,7 @@ interface ProductListProps {
 
 const ProductItem: React.FC<ProductListProps> = ({ product }) => {
     const classes = useStyles();
-    const bloc = useCartBloc();
+    const bloc = useCartPloc();
 
     return (
         <Grid item xs={6} sm={4} md={3} lg={2}>

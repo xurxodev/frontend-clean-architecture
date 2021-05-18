@@ -5,9 +5,9 @@ import { createContext } from "../common/Context";
 import ProductList from "../products/ProductList";
 import CartDrawer from "../cart/CartDrawer";
 
-const [blocContext, useBloc] = createContext<CartPloc>();
+const [blocContext, usePloc] = createContext<CartPloc>();
 
-export const useCartBloc = useBloc;
+export const useCartPloc = usePloc;
 
 const App: React.FC = () => {
     return (
