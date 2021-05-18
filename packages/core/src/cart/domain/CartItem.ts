@@ -1,7 +1,12 @@
+import { Price, Title, Image } from "../../products/domain/Product";
+
+type CartItemId = string;
+type Quantity = number;
+
 export interface CartItem {
-    readonly id: string;
-    readonly image: string;
-    readonly title: string;
-    readonly price: number;
-    readonly quantity: number;
+    readonly id: CartItemId;
+    readonly image: Image;
+    readonly title: Title;
+    readonly price: Price;
+    readonly quantity: Quantity;
 }

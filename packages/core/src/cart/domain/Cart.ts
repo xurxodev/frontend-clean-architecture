@@ -1,9 +1,12 @@
 import { CartItem } from "./CartItem";
 
+type TotalPrice = number;
+type TotalItems = number;
+
 export class Cart {
     items: readonly CartItem[];
-    readonly totalPrice: number;
-    readonly totalItems: number;
+    readonly totalPrice: TotalPrice;
+    readonly totalItems: TotalItems;
 
     constructor(items: CartItem[]) {
         this.items = items;
