@@ -1,5 +1,7 @@
 import { ProductRepository } from "../domain/ProductRepository";
 import { Product } from "../domain/Product";
+import { Either } from "../../common/domain/Either";
+import { DataError } from "../../common/domain/DataError";
 
 const products = [
     {
@@ -113,17 +115,21 @@ const products = [
 ];
 
 export class ProductInMemoryRepository implements ProductRepository {
-    get(filter: string): Promise<Product[]> {
+    get(filter: string): Promise<Either<DataError, Product[]>> {
         return new Promise((resolve, _reject) => {
             setTimeout(() => {
-                if (filter) {
-                    const filteredProducts = products.filter((p: Product) => {
-                        return p.title.toLowerCase().includes(filter.toLowerCase());
-                    });
+                try {
+                    if (filter) {
+                        const filteredProducts = products.filter((p: Product) => {
+                            return p.title.toLowerCase().includes(filter.toLowerCase());
+                        });
 
-                    resolve(filteredProducts);
-                } else {
-                    resolve(products);
+                        resolve(Either.right(filteredProducts));
+                    } else {
+                        resolve(Either.right(products));
+                    }
+                } catch (error) {
+                    resolve(Either.left(error));
                 }
             }, 100);
         });

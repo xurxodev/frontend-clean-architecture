@@ -1,3 +1,4 @@
+import { DataError } from "../../common/domain/DataError";
 import { Ploc } from "../../common/presentation/Ploc";
 import { GetProductsUseCase } from "../domain/GetProductsUseCase";
 import { productsInitialState, ProductsState } from "./ProductsState";
@@ -7,22 +8,29 @@ export class ProductsPloc extends Ploc<ProductsState> {
         super(productsInitialState);
     }
 
-    search(searchTerm: string) {
-        this.getProductsUseCase
-            .execute(searchTerm)
-            .then(products =>
+    async search(searchTerm: string) {
+        const productResult = await this.getProductsUseCase.execute(searchTerm);
+
+        productResult.fold(
+            error => this.changeState(this.handleError(searchTerm, error)),
+            products =>
                 this.changeState({
                     kind: "LoadedProductsState",
-                    products: products,
+                    products,
                     searchTerm,
                 })
-            )
-            .catch(() =>
-                this.changeState({
+        );
+    }
+
+    private handleError(searchTerm: string, error: DataError): ProductsState {
+        switch (error.kind) {
+            case "UnexpectedError": {
+                return {
+                    searchTerm,
                     kind: "ErrorProductsState",
-                    error: "An error has ocurred loading products",
-                    searchTerm,
-                })
-            );
+                    error: "Sorry, an error has ocurred. Please try later again",
+                };
+            }
+        }
     }
 }

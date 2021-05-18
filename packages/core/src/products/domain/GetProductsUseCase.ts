@@ -1,5 +1,7 @@
 import { ProductRepository } from "./ProductRepository";
 import { Product } from "./Product";
+import { Either } from "../../common/domain/Either";
+import { DataError } from "../../common/domain/DataError";
 
 export class GetProductsUseCase {
     private productRepository: ProductRepository;
@@ -8,7 +10,7 @@ export class GetProductsUseCase {
         this.productRepository = productRepository;
     }
 
-    execute(filter: string): Promise<Array<Product>> {
+    execute(filter: string): Promise<Either<DataError, Product[]>> {
         return this.productRepository.get(filter);
     }
 }
