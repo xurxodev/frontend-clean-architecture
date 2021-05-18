@@ -1,5 +1,7 @@
 import { CartRepository } from "../domain/CartRepository";
 import { Cart } from "../domain/Cart";
+import { DataError } from "../../common/domain/DataError";
+import { Either } from "../../common/domain/Either";
 
 export class CartInMemoryRepository implements CartRepository {
     cart = new Cart([
@@ -19,19 +21,27 @@ export class CartInMemoryRepository implements CartRepository {
         },
     ]);
 
-    get(): Promise<Cart> {
+    get(): Promise<Either<DataError, Cart>> {
         return new Promise((resolve, _reject) => {
             setTimeout(() => {
-                resolve(this.cart);
+                try {
+                    resolve(Either.right(this.cart));
+                } catch (error) {
+                    resolve(Either.left({ kind: "UnexpectedError", error }));
+                }
             }, 100);
         });
     }
 
-    save(cart: Cart): Promise<boolean> {
+    save(cart: Cart): Promise<Either<DataError, boolean>> {
         return new Promise((resolve, _reject) => {
             setTimeout(() => {
-                this.cart = cart;
-                resolve(true);
+                try {
+                    this.cart = cart;
+                    resolve(Either.right(true));
+                } catch (error) {
+                    resolve(Either.left({ kind: "UnexpectedError", error }));
+                }
             }, 100);
         });
     }

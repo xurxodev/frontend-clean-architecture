@@ -1,6 +1,6 @@
 export interface UnexpectedError {
     kind: "UnexpectedError";
-    message: Error;
+    error: Error;
 }
 
 export type DataError = UnexpectedError;

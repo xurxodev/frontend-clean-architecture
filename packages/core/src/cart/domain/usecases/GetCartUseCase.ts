@@ -1,5 +1,7 @@
 import { CartRepository } from "../CartRepository";
 import { Cart } from "../Cart";
+import { DataError } from "../../../common/domain/DataError";
+import { Either } from "../../../common/domain/Either";
 
 export class GetCartUseCase {
     private cartRepository: CartRepository;
@@ -8,7 +10,7 @@ export class GetCartUseCase {
         this.cartRepository = cartRepository;
     }
 
-    execute(): Promise<Cart> {
+    execute(): Promise<Either<DataError, Cart>> {
         return this.cartRepository.get();
     }
 }

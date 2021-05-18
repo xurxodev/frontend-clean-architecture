@@ -6,6 +6,7 @@ import { RemoveItemFromCartUseCase } from "../domain/usecases/RemoveItemFromCart
 import { EditQuantityOfCartItemUseCase } from "../domain/usecases/EditQuantityOfCartItemUseCase";
 import { Product } from "../../products/domain/Product";
 import { Cart } from "../domain/Cart";
+import { DataError } from "../../common/domain/DataError";
 
 export class CartPloc extends Ploc<CartState> {
     constructor(
@@ -15,6 +16,7 @@ export class CartPloc extends Ploc<CartState> {
         private editQuantityOfCartItemUseCase: EditQuantityOfCartItemUseCase
     ) {
         super(cartInitialState);
+
         this.loadCart();
     }
 
@@ -26,35 +28,40 @@ export class CartPloc extends Ploc<CartState> {
         this.changeState({ ...this.state, open: true });
     }
 
-    removeCartItem(item: CartItemState) {
-        this.removeItemFromCartUseCase
-            .execute(item.id)
-            .then(cart => this.changeState(this.mapToUpdatedState(cart)));
+    async removeCartItem(item: CartItemState) {
+        const result = await this.removeItemFromCartUseCase.execute(item.id);
+
+        result.fold(
+            error => this.changeState(this.handleError(error)),
+            cart => this.changeState(this.mapToUpdatedState(cart))
+        );
     }
 
-    editQuantityCartItem(item: CartItemState, quantity: number) {
-        this.editQuantityOfCartItemUseCase
-            .execute(item.id, quantity)
-            .then(cart => this.changeState(this.mapToUpdatedState(cart)));
+    async editQuantityCartItem(item: CartItemState, quantity: number) {
+        const result = await this.editQuantityOfCartItemUseCase.execute(item.id, quantity);
+
+        result.fold(
+            error => this.changeState(this.handleError(error)),
+            cart => this.changeState(this.mapToUpdatedState(cart))
+        );
     }
 
-    addProductToCart(product: Product) {
-        this.addProductToCartUseCase
-            .execute(product)
-            .then(cart => this.changeState(this.mapToUpdatedState(cart)));
+    async addProductToCart(product: Product) {
+        const result = await this.addProductToCartUseCase.execute(product);
+
+        result.fold(
+            error => this.changeState(this.handleError(error)),
+            cart => this.changeState(this.mapToUpdatedState(cart))
+        );
     }
 
-    private loadCart() {
-        this.getCartUseCase
-            .execute()
-            .then(cart => this.changeState(this.mapToUpdatedState(cart)))
-            .catch(() =>
-                this.changeState({
-                    kind: "ErrorCartState",
-                    error: "An error has ocurred loading products",
-                    open: this.state.open,
-                })
-            );
+    private async loadCart() {
+        const result = await this.getCartUseCase.execute();
+
+        result.fold(
+            error => this.changeState(this.handleError(error)),
+            cart => this.changeState(this.mapToUpdatedState(cart))
+        );
     }
 
     mapToUpdatedState(cart: Cart): CartState {
@@ -75,5 +82,17 @@ export class CartPloc extends Ploc<CartState> {
                 };
             }),
         };
+    }
+
+    private handleError(error: DataError): CartState {
+        switch (error.kind) {
+            case "UnexpectedError": {
+                return {
+                    open: this.state.open,
+                    kind: "ErrorCartState",
+                    error: "Sorry, an error has ocurred. Please try later again",
+                };
+            }
+        }
     }
 }

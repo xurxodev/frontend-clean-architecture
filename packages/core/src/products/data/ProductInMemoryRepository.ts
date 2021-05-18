@@ -129,7 +129,7 @@ export class ProductInMemoryRepository implements ProductRepository {
                         resolve(Either.right(products));
                     }
                 } catch (error) {
-                    resolve(Either.left(error));
+                    resolve(Either.left({ kind: "UnexpectedError", error }));
                 }
             }, 100);
         });

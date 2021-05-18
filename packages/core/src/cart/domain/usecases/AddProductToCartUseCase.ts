@@ -1,6 +1,9 @@
 import { CartRepository } from "../CartRepository";
 import { Cart } from "../Cart";
 import { Product } from "../../../products/domain/Product";
+import { Either } from "../../../common/domain/Either";
+import { DataError } from "../../../common/domain/DataError";
+import { EitherAsync } from "../../../common/domain/EitherAsync";
 
 export class AddProductToCartUseCase {
     private cartRepository: CartRepository;
@@ -9,21 +12,25 @@ export class AddProductToCartUseCase {
         this.cartRepository = cartRepository;
     }
 
-    async execute(product: Product): Promise<Cart> {
-        const cart = await this.cartRepository.get();
+    async execute(product: Product): Promise<Either<DataError, Cart>> {
+        const cartResult = EitherAsync.fromPromise(this.cartRepository.get());
 
-        const cartItem = {
-            id: product.id,
-            image: product.image,
-            title: product.title,
-            price: product.price,
-            quantity: 1,
-        };
+        return cartResult
+            .flatMap(async cart => {
+                const cartItem = {
+                    id: product.id,
+                    image: product.image,
+                    title: product.title,
+                    price: product.price,
+                    quantity: 1,
+                };
 
-        const editedCart = cart.addItem(cartItem);
+                const editedCart = cart.addItem(cartItem);
 
-        await this.cartRepository.save(editedCart);
+                const saveResult = await this.cartRepository.save(editedCart);
 
-        return editedCart;
+                return saveResult.map(() => editedCart);
+            })
+            .run();
     }
 }
