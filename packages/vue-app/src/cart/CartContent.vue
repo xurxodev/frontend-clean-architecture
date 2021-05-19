@@ -3,12 +3,13 @@
         <ProgressSpinner />
     </div>
     <div id="info-container" v-if="state.kind === 'ErrorCartState'">Error</div>
-    <div id="items-container" idv-if="state.kind === 'UpdatedProductsState'">
-        <div style="max-height: 650px; overflow: scroll">
+    <div id="items-container" v-if="state.kind === 'UpdatedCartState'">
+        <div v-if="state.items.length > 0" style="max-height: 650px; overflow: scroll">
             <div v-for="item in state.items" v-bind:key="item.id">
                 <CartContenttItem v-bind="item" />
             </div>
         </div>
+        <h2 v-if="state.items.length === 0">Empty Cart :(</h2>
     </div>
     <Divider />
     <div id="total-price-container">
