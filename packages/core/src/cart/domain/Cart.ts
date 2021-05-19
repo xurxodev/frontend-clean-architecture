@@ -56,13 +56,13 @@ export class Cart {
         return new Cart(newItems);
     }
 
-    private calculateTotalPrice(items: CartItem[]): number {
+    private calculateTotalPrice(items: CartItem[]): TotalPrice {
         return +items
             .reduce((accumulator, item) => accumulator + item.quantity * item.price, 0)
             .toFixed(2);
     }
 
-    private calculateTotalItems(items: CartItem[]): number {
+    private calculateTotalItems(items: CartItem[]): TotalItems {
         return +items.reduce((accumulator, item) => accumulator + item.quantity, 0);
     }
 }
