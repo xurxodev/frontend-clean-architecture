@@ -3,6 +3,9 @@
 
 The purpose of this repository is to follow the principles of Clean Architecture in frontend using different frameworks such as ReactJS and VueJs
 
+## Blog post with detail explanation
+
+[Alejándonos de ReactJs y VueJs en el frontend  usando Clean Architecture](https://xurxodev.com/frontend-clean_architecture)
 
 ## Screenshots
 
@@ -14,6 +17,13 @@ The purpose of this repository is to follow the principles of Clean Architecture
 This app use Clean architecture
 
 ![bloc-clean-architecture](https://user-images.githubusercontent.com/5593590/82728951-03ec6a00-9cf4-11ea-8557-011a3dea7804.png)
+
+## BloC Pattern
+
+This app use Bloc pattern as presentation pattern
+
+![bloc-unidirectional-data-flow](https://user-images.githubusercontent.com/5593590/118929889-6008bf00-b945-11eb-865a-1ca3df8d618e.png)
+
 
 ## Available Scripts
 
