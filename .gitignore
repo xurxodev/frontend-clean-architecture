@@ -1,2 +1,4 @@
 /node_modules
-.eslintcache
+*.eslintcache
+packages/*.eslintcache
+.idea
