@@ -32,14 +32,19 @@ In the project directory, you can run:
 
 ### Development
 
+First you are need build core:
+```
+$ yarn core:build
+```
+
 Start react development server:
 ```
-$ yarn react start
+$ yarn react:serve
 ```
 
 Start vue development server:
 ```
-$ yarn vue serve
+$ yarn vue:serve
 ```
 
 ### Testing
