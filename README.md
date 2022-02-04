@@ -6,7 +6,7 @@ The purpose of this repository is to follow the principles of Clean Architecture
 ## Clean Architecture Course
 
 * [Curso Clean Architecture](https://xurxodev.com/curso-clean-architecture)
-* 
+
 ## Blog post with detail explanation
 
 * [Moving away from ReactJs and VueJs on front-end using Clean Architecture](https://xurxodev.medium.com/frontend-clean-architecture-ca2592bd9d58) (English)
