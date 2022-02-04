@@ -3,14 +3,14 @@
 
 The purpose of this repository is to follow the principles of Clean Architecture in frontend using different frameworks such as ReactJS and VueJs
 
+## Clean Architecture Course
+
+* [Curso Clean Architecture](https://xurxodev.com/curso-clean-architecture)
+* 
 ## Blog post with detail explanation
 
 * [Moving away from ReactJs and VueJs on front-end using Clean Architecture](https://xurxodev.medium.com/frontend-clean-architecture-ca2592bd9d58) (English)
 * [Alejándonos de ReactJs y VueJs en el frontend  usando Clean Architecture](https://xurxodev.com/frontend-clean_architecture) (Spanish)
-
-## Clean Architecture Course
-
-* [Curso Clean Architecture](https://xurxodev.com/curso-clean-architecture)
 
 ## Screenshots
 
