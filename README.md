@@ -8,6 +8,10 @@ The purpose of this repository is to follow the principles of Clean Architecture
 * [Moving away from ReactJs and VueJs on front-end using Clean Architecture](https://xurxodev.medium.com/frontend-clean-architecture-ca2592bd9d58) (English)
 * [Alejándonos de ReactJs y VueJs en el frontend  usando Clean Architecture](https://xurxodev.com/frontend-clean_architecture) (Spanish)
 
+## Clean Architecture Course
+
+* [Curso Clean Architecture](https://xurxodev.com/curso-clean-architecture)
+
 ## Screenshots
 
 ![shopping-cart-react-vue](https://user-images.githubusercontent.com/5593590/118297753-ddb07300-b4de-11eb-8ec9-23c3a14d1883.png)
