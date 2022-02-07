@@ -1,2 +1,7 @@
 /node_modules
-.eslintcache
+*.eslintcache
+packages/*.eslintcache
+packages/core/build
+
+.idea
+

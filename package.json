@@ -10,6 +10,12 @@
     "core": "yarn workspace @frontend-clean-architecture/core",
     "react": "yarn workspace @frontend-clean-architecture/react-app",
     "vue": "yarn workspace @frontend-clean-architecture/vue-app",
+    "core:build": "yarn core build",
+    "core:serve": "yarn core start",
+    "react:build": "yarn react build",
+    "react:serve": "yarn react start",
+    "vue:build": "yarn vue build",
+    "vue:serve": "yarn vue serve",
     "prettify": "prettier \"packages/**/src/**/*.{js,jsx,json,css,ts,tsx,vue}\" --write",
     "lint": "eslint packages/*/src/ --ext ts,tsx,vue",
     "test": "yarn core test && yarn react test"

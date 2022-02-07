@@ -4,7 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import logo from "./logo.png";
+import logo from "./Logo.png";
 import reactLogo from "./react-logo.png";
 import { useCartPloc } from "../app/App";
 import { usePlocState } from "../common/usePlocState";
