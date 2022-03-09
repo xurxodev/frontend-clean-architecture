@@ -7,12 +7,13 @@ export function usePlocState<S>(ploc: Ploc<S>) {
     useEffect(() => {
         const stateSubscription = (state: S) => {
             setState(state);
+            ploc.unsubscribe(stateSubscription)
         };
 
         ploc.subscribe(stateSubscription);
 
         return () => ploc.unsubscribe(stateSubscription);
-    }, [ploc]);
+    }, []);
 
     return state;
 }
