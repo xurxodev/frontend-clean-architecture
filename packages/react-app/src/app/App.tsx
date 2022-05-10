@@ -6,12 +6,11 @@ import ProductList from "../products/ProductList";
 import CartDrawer from "../cart/CartDrawer";
 
 const [blocContext, usePloc] = createContext<CartPloc>();
-
 export const useCartPloc = usePloc;
-
+const ploc = dependenciesLocator.provideCartPloc();
 const App: React.FC = () => {
     return (
-        <blocContext.Provider value={dependenciesLocator.provideCartPloc()}>
+        <blocContext.Provider value={ploc}>
             <MyAppBar />
             <ProductList />
             <CartDrawer />
